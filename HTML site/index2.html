@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+
+</head>
+<body>
+	<header>RESERVAR ESPACIO HEADER</header>
+	<nav>
+		<ul>
+			<li><a href="//"></a>headere</li>
+			<li><a href="//"></a>headere</li>
+			<li><a href="//"></a>headere</li>
+			<li><a href="//"></a>headere</li>
+			<li><a href="//"></a>headere</li>
+		</ul>
+	</nav>
+	<section>
+		<article>
+			<section>
+				<header>RESERVAR ESPACIO HEADER</header>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, tempora assumenda fugit alias ab tempore nemo voluptatum reiciendis tenetur beatae eum exercitationem recusandae delectus dicta, accusantium soluta qui accusamus maxime.
+					</p>
+			</section>
+
+			<section id="demo">
+				<header>RESERVAR ESPACIO HEADER</header>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum dignissimos earum tempore, ex est corrupti culpa ipsa ea quos dolorem itaque, nam necessitatibus adipisci odit at repellendus aut tempora, in.</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum nisi fugiat nesciunt debitis quae impedit, pariatur alias numquam iusto odit expedita consectetur laborum blanditiis vitae nulla! Doloremque ullam, corporis atque!</p>
+			</section>
+		</article>
+	</section>
+
+
+<button type="button" onclick="loadDoc()">Request data</button>
+
+<p id="demo"></p>
+
+
+
+<script>
+
+
+
+
+
+
+    ajaxreq.open("GET", "http://opendata.gijon.es/descargar.php?id=7&tipo=JSON", true);
+	ajaxreq.send();
+
+
+function loadDoc() {
+  ajaxreq = new XMLHttpRequest();
+  ajaxreq.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+
+
+	
+	var myObj = JSON.parse(this.responseText);
+    console.log(myObj);
+	
+
+  	var obj = ajaxreq;
+  	var data = this.text;
+
+
+    document.getElementById("demo").innerHTML = myObj; 
+
+    let objJson = myObj;
+    let value = objJson;
+	}
+
+ };
+
+/*
+    XMLHttpRequest.open("GET", "http://opendata.gijon.es/descargar.php?id=7&tipo=JSON", true);
+	XMLHttpRequest.send();
+
+*/
+
+ 
+
+
+
+
+
+
+
+
+/*
+
+      handlebars.registerHelper('ifHayContenedores1', function (contenedoresropa, titulo, latitud, options) {
+      	resultado = false;
+      	console.log("contenedores: " + contenedorropa[1].pv.length);
+
+      	for (i=0; i<contenedorropa[1].pv.length; i++) {
+      		resultado = true;
+      	}
+      });
+
+      if(resultado == true){
+      	return options.fn(this);
+      } else {
+      	return options.inverse(this);
+      }
+};
+
+*/
+
+/*
+
+  var obj = ajaxreq;
+  var data = this.text;
+
+
+       document.getElementById("demo").innerHTML = myObj; 
+
+       let objJson = myObj;
+       let value = objJson;
+
+ }; */
+
+       // poniendo in recorre las letras del objeto, no su contenido
+
+       /*
+       for(let titulo in myObj ) {
+       	console.log(titulo[1] + "");
+       }
+		*/
+
+// nuevo script
+
+
+ 
+
+
+
+
+
+
+</script>
+
+
+
+
+
+<ul>
+	<li id="contenedorropa"></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

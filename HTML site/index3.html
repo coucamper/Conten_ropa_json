@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Document</title>
+<link rel="stylesheet" href="../css/estilizado.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+</head>
+<body class="estilizado">
+	<div class="estilizado unidad"></div>
+<button type="button" onclick="relleno()">Ver listado de contenedores</button>
+	<header><h1>CONTENEDORES DE ROPA Y TEXTIL EN GIJÓN</h1></header>
+	<nav>
+
+
+		<table class="tabla estilizado" id="tabla estilizado">
+			<tr>
+				<td id="titulo"></td>
+				<td id="lugares"></td> 
+			</tr>
+			<tr>
+				<td id="demor" class="tds"></td>
+			</tr>
+
+		</table>
+	</nav>
+</body>
+
+
+
+<!-- <button type="button" onclick="relleno()">Ver listado de contenedores</button> -->
+
+
+
+
+<script>
+
+
+
+
+
+/* LLAMADA xmlhttp PARSEADO*/
+
+var myObj = xmlhttp;
+
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) { myObj = JSON.parse(this.responseText); }     
+};
+
+
+/* ACCESO A CONTENEDORES MEDIANTE DOM USANDO LOS ID'S DE ESTOS */
+
+	window.onload="relleno()";
+
+    function relleno() {
+
+    	// Para consultar acceso a los datos del objeto a traves de consola;
+		//console.log(myObj.contenedorropas.contenedorropa[40]);
+
+		var conten = document.querySelector("#titulo");
+		var lugar = document.querySelector("#lugares");
+
+		conten.innerHTML = '';
+		lugar.innerHTML = '';
+
+/* ITERAR ENTRE LOS DATOS DE LOS OBJETOS CON UN BUCLE FOR */
+		for (var item of myObj.contenedorropas.contenedorropa){
+		conten.innerHTML += '<table class="res"><tr><th class="color1">Calle</th><th class="color2">Ubicación</th><th class="color3">Latitud</th><th class="color4">localizar</th></tr><tr><td><a href="[item.latitud]" class="link">'+[item.titulo]+'</td>' + '<td>'+ [item.lugar] + '</td>' + '<td>'+[item.latitud]+'</a></td><td><a href="#"><i class="material-icons">add_location </i>Maps</a></td></tr></table>';
+}
+
+		/* for (var item of myObj.contenedorropas.contenedorropa){
+		lugar.innerHTML += '<a href="#" class="link">' + [item.lugar] + [item.latitud] +'</a></br>';
+		} */
+
+}
+
+/* ACCEDER A REPOSITORIO DE DATOS REMOTO EN ESTE CASO A "OPENDATA.GIJON.ES" */
+
+xmlhttp.open("GET", "http://opendata.gijon.es/descargar.php?id=7&tipo=JSON", true);
+xmlhttp.send();
+
+
+
+
+</script>
+
+
+</body>
+</html>
